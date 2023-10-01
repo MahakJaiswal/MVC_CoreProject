@@ -1,0 +1,60 @@
+﻿@model Visitor_Management.Models.Cls_Customer
+
+@{
+    ViewData["Title"] = "AddCustomer";
+    Layout = null;
+}
+
+<div class="panel panel-info">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+        <div class="col-md-12">
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="CustomerName">Customer Name </label><label style="color:red">*</label>
+                                @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control", placeholder = "Customer Name" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="CustomerEmail">Customer Email </label><label style="color:red">*</label>
+                                @Html.TextBoxFor(model => model.CustomerEmail, new { @class = "form-control", placeholder = "Customer Email " })
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="CustomerPhone">Contact No. </label><label style="color:red">*</label>
+                                @Html.TextBoxFor(model => model.CustomerPhone, new { @class = "form-control", placeholder = "Customer Phone " })
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="form-group" id="btn_Email">
+                                <button type="submit" class="btn btn-info" name="Save" value="Save" onclick="myFunction()"> Submit </button>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group" hidden="hidden">
+                                <label for="Idproof">Visitor Type </label><label style="color:red">*</label>
+                                @Html.TextBoxFor(model => model.Photo, new { @class = "form-control", placeholder = "Enter Visitor Type. " })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

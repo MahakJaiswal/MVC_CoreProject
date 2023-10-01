@@ -1,0 +1,63 @@
+﻿@model Visitor_Management.Models.Cls_Visitor
+@{
+    ViewData["Title"] = "ActiveVisitorCard";
+    Layout = null;
+}
+<style>
+    .present {
+        border: 2px solid #52BE80;
+        /*border-radius: 30%;*/
+    }
+
+    .absent {
+        border: 2px solid #EC7063;
+        /*border-radius: 30%;*/
+    }
+
+</style>
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="col-12">
+        <div class="card">
+
+            <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead class="mytableheader">
+                        <tr>
+                            <th>Card#</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model._VAList != null && Model._VAList.Count > 0)
+                        {
+                            int i = 0;
+                            foreach (var item in Model._VAList)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.VisitorCardNo)</td>
+                                    <td>
+                                        @if (item.status == "Out")
+                                        {
+                                            <span >Out</span>
+                                        }
+                                        else if (item.status == "In")
+                                        {
+                                            <span >In</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+}
+

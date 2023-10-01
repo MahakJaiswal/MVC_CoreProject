@@ -1,0 +1,173 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Visitor_Management
+build_property.RootNamespace = Visitor_Management
+build_property.ProjectDir = D:\Visitor_Managemet_PRoject\Visitor_Management (2)\Visitor_Management\Visitor_Management\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Visitor_Managemet_PRoject\Visitor_Management (2)\Visitor_Management\Visitor_Management
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Accessories/Accessories.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzb3JpZXNcQWNjZXNzb3JpZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Accessories/AddAccessories.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzb3JpZXNcQWRkQWNjZXNzb3JpZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Branch/AddMasterBranchAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoXEFkZE1hc3RlckJyYW5jaEFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Branch/AddMasterLocation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoXEFkZE1hc3RlckxvY2F0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Branch/MasterBranchAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoXE1hc3RlckJyYW5jaEFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Branch/MasterLocation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoXE1hc3RlckxvY2F0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Customer/AddCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQWRkQ3VzdG9tZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Customer/Customer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzdG9tZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Department/AddDepartment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxBZGREZXBhcnRtZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Department/MasterDepartment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxNYXN0ZXJEZXBhcnRtZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Employee/AddEmployee.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQWRkRW1wbG95ZWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Employee/EmployeeMaster.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRW1wbG95ZWVNYXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/ExistingVisitor/ActiveInActiveVisitor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhpc3RpbmdWaXNpdG9yXEFjdGl2ZUluQWN0aXZlVmlzaXRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/ExistingVisitor/AddExistingVisitor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhpc3RpbmdWaXNpdG9yXEFkZEV4aXN0aW5nVmlzaXRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/ExistingVisitor/ExistingVisitor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhpc3RpbmdWaXNpdG9yXEV4aXN0aW5nVmlzaXRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/IdProof/AddMasterIdProof.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWRQcm9vZlxBZGRNYXN0ZXJJZFByb29mLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/IdProof/MasterIdProof.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWRQcm9vZlxNYXN0ZXJJZFByb29mLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Login/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Login/ForgetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cRm9yZ2V0UGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Login/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Purpose/AddMasterVisitingPurpose.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVycG9zZVxBZGRNYXN0ZXJWaXNpdGluZ1B1cnBvc2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Purpose/MasterVisitingPurpose.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVycG9zZVxNYXN0ZXJWaXNpdGluZ1B1cnBvc2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/VisitorCard/AddVisitorCardMaster.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRvckNhcmRcQWRkVmlzaXRvckNhcmRNYXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/VisitorCard/VisitorCardMaster.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRvckNhcmRcVmlzaXRvckNhcmRNYXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/VisitorType/AddMasterVisitorType.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRvclR5cGVcQWRkTWFzdGVyVmlzaXRvclR5cGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/VisitorType/MasterVisitorType.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRvclR5cGVcTWFzdGVyVmlzaXRvclR5cGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Visitor/ActiveVisitorCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRvclxBY3RpdmVWaXNpdG9yQ2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Visitor/AddVisitor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRvclxBZGRWaXNpdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Visitor/EditVisitorStatus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRvclxFZGl0VmlzaXRvclN0YXR1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Visitor/InActiveVisitorCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRvclxJbkFjdGl2ZVZpc2l0b3JDYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Visitor/MasterVisitor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRvclxNYXN0ZXJWaXNpdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Visitor/VisitorData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRvclxWaXNpdG9yRGF0YS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Visitor_Managemet_PRoject/Visitor_Management (2)/Visitor_Management/Visitor_Management/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ke6c4jxwh6

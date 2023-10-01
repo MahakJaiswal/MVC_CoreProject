@@ -1,0 +1,213 @@
+﻿@model Visitor_Management.Models.Cls_Visitor
+@{
+    ViewData["Title"] = "AddExistingVisitor";
+    Layout = null;
+}
+
+<link href="~/css/bootstrap-multiselect.css" rel="stylesheet" />
+
+<div class="panel panel-info">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+
+        <div class="row">
+             <div>
+                <div class="form-group" hidden="hidden">
+                    @Html.TextBoxFor(model => model.Visitor_Id, new { @class = "form-control"})
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Enter Visitor Name. " })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.emailid, new { @class = "form-control", placeholder = "Enter Email. " })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.phone, new { @class = "form-control", placeholder = "Enter Phone No. " })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.address, new { @class = "form-control", placeholder = "Enter Address " })
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.adults, new SelectList(Model.AdultDDL.Select(x => new { Value = x.Value, Text = x.Text }), "Value", "Text", Model.AdultDDL), "Adults", new { @class = "form-control", required="required" })
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.minors, new SelectList(Model.MinorsDDL.Select(x => new { Value = x.Value, Text = x.Text }), "Value", "Text", Model.MinorsDDL), "Minors", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.companyname, new { @class = "form-control", placeholder = "Enter Company Name " })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.departmentname, new SelectList(Model.DepartmentDDL.Select(x => new { Value = x.Value, Text = x.Text }), "Value", "Text", Model.DepartmentDDL), "Select Department", new { @class = "form-control", required="required" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.EmpName, new SelectList(Model.EmployeeDDL.Select(x => new { Value = x.Value, Text = x.Text }), "Value", "Text", Model.EmployeeDDL), "Meeting with", new { @class = "form-control", required="required" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.visitortype, new SelectList(Model.VisitorTypeDDL.Select(x => new { Value = x.Value, Text = x.Text }), "Value", "Text", Model.visitortype), "Select Visitor type", new { @class = "form-control", required="required" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.ListBoxFor(model => model.selvisitorcardno, new SelectList(Model.VCardNoDDL.Select(x => new { Value = x.Value, Text = x.Text }), "Value", "Text", Model.VCardNoDDL), new { @class = "boot-multiselect-demo  form-control", required = "required"})
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.accessories, new SelectList(Model.AccessoriesDDL.Select(x => new { Value = x.Value, Text = x.Text }), "Value", "Text", Model.accessories), "Select Accessories", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.idproof, new SelectList(Model.IdProofDDL.Select(x => new { Value = x.Value, Text = x.Text }), "Value", "Text", Model.idproof), "Select Id proof", new { @class = "form-control", required="required" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.idproofnumber, new { @class = "form-control", placeholder = "Id proof No. " })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.purpose_of_visit, new SelectList(Model.PurposeDDL.Select(x => new { Value = x.Value, Text = x.Text }), "Value", "Text", Model.PurposeDDL), "Select Visiting purpose", new { @class = "form-control", required="required" })
+                </div>
+            </div>
+            <div>
+                <video id="video" width="200" height="180" autoplay></video>
+                <button type="button" id="capture" class="btn btn-warning">Capture</button>
+                <canvas id="canvas" width="200" height="180"></canvas>
+            </div>
+            <input type="hidden" name="Photo" id="Photo"  value=""   />
+
+        </div>
+
+        <div class="col-md-5" style="">
+            <div class="form-group" id="btn_Email">
+                <button type="submit" id="btn_submit" class="btn btn-default" name="Save" value="Save" onclick="myFunction()"> Submit </button>
+                <button type="reset" class="btn btn-default" id="btn_close"> Reset </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="~/Js/jquery-ui.js"></script>
+@*<script src="~/Js/bootstrap-multiselect.js"></script>
+*@<script src="~/plugins/jquery-ui/jquery-ui.js"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#departmentname").change(function () {
+
+            $('#EmpName').attr('disabled', true);
+            var Deptuuid = $("#departmentname :selected").val();
+            $('#EmpName').attr('disabled', false);
+
+            if (Deptuuid != null && Deptuuid != "") {
+                $.ajax({
+                    url: '../Visitor/GetEmployeeByDepartment',
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    data: { "DeptUUid": Deptuuid },
+                    success: function (result) {
+                        $("#EmpName").html("");
+
+                        $("#EmpName").append($('<option></option>').val('0').html('Meeting with'));
+                        $.each(result, function (i, reportId) {
+
+                            $("#EmpName").append($('<option></option>').val(reportId.value).html(reportId.text));
+                        });
+                    }
+                });
+            }
+        });
+
+        $('#selvisitorcardno').multiselect({
+            nonSelectedText: 'Select Visitor Card',
+            includeSelectAllOption: true,
+            buttonWidth: 245,
+            enableFiltering: true,
+            enableCaseInsensitiveFiltering: true,
+            numberDisplayed: 5
+        });
+
+        //$('#idproof').on('change', function () {
+        //    var selectedOption = $('#idproof :selected').val();
+        //    var idProofNumberInput = $('#idproofnumber');
+        //    if (selectedOption === "Aadhar Card") {
+        //  idProofNumberInput.prop('disabled', false);
+        //  idProofNumberInput.attr('pattern', '\\d{12}');
+        //} else {
+        //        idProofNumberInput.prop('disabled', true);
+        //        idProofNumberInput.removeAttr('pattern');
+        //        // Reset the value of the id proof number input
+        //        idProofNumberInput.val('');
+        //        // Show an alert message
+        //        alert('Please select a valid Id proof.');
+        //    }
+        //});
+    });
+
+</script>
+
+<script>
+
+   
+        $(document).ready(function () {
+            $('#adults, #minors').on('change', function () {
+                var adults = parseInt($('#adults').val());
+                var minors = parseInt($('#minors').val());
+
+                // Compare the values of the two dropdown lists
+                if (minors > adults) {
+                    alert('Number of minors should be equal to or less than the number of adults.');
+                    $('#minors').val(adults);
+                    return false;
+                }
+            });
+        });
+
+
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+            video.srcObject = stream;
+            video.play();
+        });
+    }
+
+    document.getElementById('capture').addEventListener('click', function () {
+        context.drawImage(video, 0, 0, 200, 180);
+        var imageData = canvas.toDataURL();
+        document.getElementById('Photo').value = imageData;
+    });
+
+</script>

@@ -1,0 +1,31 @@
+﻿@model Visitor_Management.Models.Cls_Purpose
+
+@{
+    ViewData["Title"] = "AddMasterVisitingPurpose";
+    Layout = null;
+}
+
+<div class="panel panel-info">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="form-group">
+                    <label for="selVisitingId">Purpose Of Visit </label><label style="color:red">*</label>
+                    @Html.TextBoxFor(model => model.purpose_of_visit, new { @class = "form-control", required = "required", placeholder = "Enter VisitingPurpose " })
+                </div>
+
+            </div>
+
+            <div class="col-md-8">
+                <div class="form-group" id="btn_Email">
+                    <button type="submit" class="btn btn-info" name="save" value="save" onclick="myFunction()"> Submit </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

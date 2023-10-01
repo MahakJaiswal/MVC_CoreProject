@@ -1,0 +1,170 @@
+﻿@model Visitor_Management.Models.Cls_IdProof
+
+@{
+    ViewData["Title"] = "MasterIdProof";
+}
+
+<style>
+    .marginBottom {
+        margin-bottom: 4px !important;
+    }
+
+    .spnCustom {
+        color: #827777;
+        font-size: 12px;
+    }
+
+    .alert {
+        /*color: #fff;*/
+        background-color: #ffc107;
+        /*border-color: #0059FF;*/
+        padding: 20px 40px;
+        min-width: 420px;
+        right: 0px;
+        top: 0.5px;
+        position: absolute;
+        border-radius: 5px;
+        border-left: 8px solid #ffa502;
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="~/plugins/fontawesome-free/css/all.css" rel="stylesheet" />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<div class="content-header">
+    @*<div class="container-fluid">*@
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1 class="m-0">Master <span class="spnCustom">Id Proof</span></h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Id Proof</a></li>
+                <li class="breadcrumb-item active">Master</li>
+            </ol>
+        </div>
+    </div>
+    @*</div>*@
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    // var Permission = Context.Session.GetString("Permission");
+
+    @if (@ViewBag.Message != null)
+    {
+
+        <div class="alert" id="divMsg">
+            <span class="msg" style="color:white; font-size: 18px; padding: 0 20px; font-weight: bold;">@ViewBag.Message</span>
+
+        </div>
+
+    }
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Id Proof</h3>
+                @*<input type="file" name="postedFile" class="btn btn-default" />
+            <input type="submit" class="btn btn-warning" value="Upload" name="Upload" id="btnSubmit" />*@
+                <a href="#" id="btn_add" title="Add IdProof" class="btn btn-sm btn-info text-white" style="float:right"><i class="fa fa-plus-circle"></i> Add</a>
+
+            </div>
+            <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead class="mytableheader">
+                        <tr>
+
+                            <th>Id Proof</th>
+                            <th>PostedBy</th>
+                            <th>Posted DateTime</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model._List != null && Model._List.Count > 0)
+                        {
+                            foreach (var item in Model._List)
+                            {
+                                <tr style="font-size:14px; font-weight:500">
+
+                                    <td>@Html.DisplayFor(modelItem => item.Idproof)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.PostedBy)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Posteddatetime)</td>
+
+                                </tr>
+                            }
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade bs-example-modal-sm" id="MapPopup">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title" id="modalHeader"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="AddList">
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+<script src="~/plugins/jquery/jquery.js"></script>
+
+
+<script>
+    setTimeout(function () {
+        $('#divMsg').fadeOut('fast');
+    }, 3000);
+    $(document).ready(function () {
+        $('a').removeClass('active');
+        $('li').removeClass('menu-open');
+        $("#liMaster").addClass('menu-open');
+        $("#aMaster").addClass('active');
+        $("#aIdProofMaster").addClass('active');
+
+        $('#custom-tabs-three-home-tab').addClass('active');
+
+    });
+
+
+
+    $('#btn_add').click(function () {
+        $('#modalHeader').text('Add IdProof');
+        $.ajax({
+            url: "/IdProof/AddMasterIdProof",
+            type: "Get",
+            contentType: "application/json; charset=utf-8",
+            datatype: "json",
+            success: function (result) {
+                //console.log(result);
+                $('#MapPopup').modal({ backdrop: 'static' });//, keyboard: false
+                $('#AddList').empty();
+                $('#AddList').append(result);
+                $('#MapPopup').modal('show');
+            },
+            failure: function (result) {
+                alert('Fail To Load data');
+            },
+            error: function (result) {
+            }
+        });
+    });
+
+
+</script>

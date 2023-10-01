@@ -1,0 +1,27 @@
+﻿@model Visitor_Management.Models.Cls_Department
+@{
+    ViewData["Title"] = "AddDepartmment";
+    Layout = null;
+}
+<div class="panel panel-info">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="Department">Department </label><label style="color:red">*</label>
+                    @Html.TextBoxFor(model => model.Department, new { @class = "form-control", placeholder = "Enter Department. " })
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="form-group" id="btn_Email">
+                    <button type="submit" class="btn btn-info" name="Save" value="Save" onclick="myFunction()"> Submit </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,190 @@
+﻿@model Visitor_Management.Models.Cls_BranchAdmin
+
+@{
+    ViewData["Title"] = "MasterBranchAdmin";
+}
+
+<style>
+    .marginBottom {
+        margin-bottom: 4px !important;
+    }
+
+    .spnCustom {
+        color: #827777;
+        font-size: 12px;
+    }
+
+    .alert {
+        /*color: #fff;*/
+        background-color: #ffc107;
+        /*border-color: #0059FF;*/
+        padding: 20px 40px;
+        min-width: 420px;
+        right: 0px;
+        top: 0.5px;
+        position: absolute;
+        border-radius: 5px;
+        border-left: 8px solid #ffa502;
+    }
+
+</style>
+
+<link href="~/plugins/fontawesome-free/css/all.css" rel="stylesheet" />
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Master <span class="spnCustom">Branch Admin</span></h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Branch Admin</a></li>
+                    <li class="breadcrumb-item active">Master</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @*    var Permission = Context.Session.GetString("Permission");*@
+    <div class="row">
+        @if (@ViewBag.Message != null)
+        {
+
+            <div class="alert" id="divMsg">
+                <span class="msg" style="color:white; font-size: 18px; padding: 0 20px; font-weight: bold;">@ViewBag.Message</span>
+
+            </div>
+
+        }
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Branch Admin</h3>
+
+
+                    <a href="#" id="btn_add" title="Add Branch Admin" class="btn btn-sm btn-info text-white" style="float:right"><i class="fa fa-plus-circle"></i>  Add</a>
+
+                </div>
+
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead class="mytableheader">
+                            <tr style="font-size:14px; font-weight:500">
+
+                                <th>Branch</th>
+                                <th>Branch Admin</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Password</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model._List != null && Model._List.Count > 0)
+                            {
+                                foreach (var item in Model._List)
+                                {
+                                    <tr style="font-size:14px; font-weight:500">
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BranchID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BranchAdminName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Phone)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Password)
+                                        </td>
+                                        
+                                        <td>
+
+                                            <div class="btn-group">
+
+                                                <button type="button" title="Click to edit" onclick='javascript: displayPopup("@Url.Content(item.LineID.ToString())");' class="btn btn-round btn-default fa fa-edit"></button>
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="modal fade" id="MapPopup">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title" id="modalHeader"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="AddList">
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script src="~/plugins/jquery/jquery.js"></script>
+
+<script>
+    setTimeout(function () {
+        $('#divMsg').fadeOut('fast');
+    }, 10000);
+    $(document).ready(function () {
+        $('a').removeClass('active');
+        $('li').removeClass('menu-open');
+        $("#liMaster").addClass('menu-open');
+        $("#aMaster").addClass('active');
+        $("#aBranchAdminMaster").addClass('active');
+        $('#custom-tabs-three-home-tab').addClass('active');
+
+    });
+
+    $('#btn_add').click(function () {
+        $('#modalHeader').text('Add Branch Admin');
+        $.ajax({
+            url: "/Branch/AddMasterBranchAdmin",
+            type: "Get",
+            contentType: "application/json; charset=utf-8",
+            datatype: "json",
+            success: function (result) {
+                $('#MapPopup').modal({ backdrop: 'static' });//, keyboard: false
+                $('#AddList').empty();
+                $('#AddList').append(result);
+                $('#MapPopup').modal('show');
+            },
+            failure: function (result) {
+                alert('Fail To Load data');
+            },
+            error: function (result) {
+            }
+        });
+    });
+
+
+
+</script>

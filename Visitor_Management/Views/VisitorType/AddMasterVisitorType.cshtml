@@ -1,0 +1,36 @@
+﻿@model Visitor_Management.Models.Cls_VisitorType
+
+@{
+    ViewData["Title"] = "AddMasterVisitorType";
+    Layout = null;
+}
+
+<div class="panel panel-info">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="form-group">
+                    <label for="Idproof">Visitor Type </label><label style="color:red">*</label>
+                    @Html.TextBoxFor(model => model.VisiotType, new { @class = "form-control", placeholder = "Enter Visitor Type. " })
+                </div>
+
+            </div>
+
+            <div class="col-md-8">
+                <div class="form-group" id="btn_Email">
+                    <button type="submit" class="btn btn-info" name="save" value="save" onclick="myFunction()"> Submit </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<script src="~/plugins/jquery/jquery.js"></script>

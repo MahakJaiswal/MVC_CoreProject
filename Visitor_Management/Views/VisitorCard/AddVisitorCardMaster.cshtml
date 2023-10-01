@@ -1,0 +1,23 @@
+﻿@model Visitor_Management.Models.Cls_VisitorCard
+
+@{
+    ViewData["Title"] = "AddVisitorCardMaster";
+    Layout = null;
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label for="selVisitingId">Visitor Card No </label><label style="color:red">*</label>
+            @Html.TextBoxFor(model => model.VisitorCardNo, new { @class = "form-control", placeholder = "Enter VisitorNo." })
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="form-group">
+            <button type="submit" class="btn btn-info" name="Save" value="Save">Save</button>
+
+        </div>
+    </div>
+</div>

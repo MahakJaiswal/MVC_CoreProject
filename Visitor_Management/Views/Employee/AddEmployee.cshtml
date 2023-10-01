@@ -1,0 +1,51 @@
+﻿@model Visitor_Management.Models.Cls_Employee
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="EmpId">Enter Employee Id</label><label class="text-red">*</label>
+                    @Html.TextBoxFor(model => model.EmpId, new { @class = "form-control", placeholder = "Enter Employee Id", required = "required" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="EmployeeName">Enter Name</label><label class="text-red">*</label>
+                    @Html.TextBoxFor(model => model.EmpName, new { @class = "form-control", placeholder = "Enter Name", required = "required" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="Department">Select Department</label><label class="text-red">*</label>
+                    @Html.DropDownListFor(model => model.DepartmentId, new SelectList(Model.DepartmentDDL.Select(x => new { Value = x.Value, Text = x.Text }), "Value", "Text", Model.DepartmentDDL), "Select Department", new { @class = "form-control", required="required" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="Designation">Enter Designation</label><label class="text-red">*</label>
+                    @Html.TextBoxFor(model => model.DesignationId, new { @class = "form-control", placeholder = "Enter Designation", required = "required" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="Phone">Enter Phone</label><label class="text-red">*</label>
+                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "Enter Phone", required = "required" })
+                </div>
+            </div>
+
+
+            <div class="col-md-4" style="margin-top:4%">
+                <div class="form-group">
+                    <button type="submit" id="btn_submit" class="btn btn-info" name="Save" value="Save">Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

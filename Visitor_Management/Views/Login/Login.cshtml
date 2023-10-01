@@ -1,0 +1,214 @@
+﻿@model Visitor_Management.Models.Cls_Login
+@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Visitor Management | Log in</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    @*<link href="~/plugins/fontawesome/css/all.min.css" rel="stylesheet" />*@
+    <link href="~/plugins/fontawesome-free/css/all.css" rel="stylesheet" />
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link href="~/dist/css/adminlte.min.css" rel="stylesheet" />
+</head>
+
+<style>  
+
+        .login-page, .register-page {
+        -ms-flex-align: center;
+        align-items: center;
+        background: linear-gradient(45deg,black,blue)
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        height: 100vh;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+
+    .login-box {
+        width: 400px;
+        background: linear-gradient(45deg,black,blue);
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .login-box .card-header {
+        background-color: #2c3e50;
+        color: #fff;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .login-box .card-body {
+        padding: 40px;
+    }
+
+    .login-box .form-control {
+        border-radius: 5px;
+        box-shadow: none;
+    }
+
+       
+          
+</style>
+
+<body class="hold-transition login-page bgimg-1" style="overflow: hidden;">
+    <div class="login-box" style="opacity: 1.0;">
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+        {
+
+            <div class="card">
+                <div class="card-body login-card-body" style="border-radius:10px;">
+                    <div class="login-logo">
+                        <a href="#">
+
+                        </a>
+                    </div>
+                    <p class="login-box-msg">Sign in to start your session</p>
+                    <form>
+                        <div class="input-group mb-3">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "UserName", required = "required", })
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fa fa-envelope"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", required = "required" })
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fa fa-lock"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="icheck-primary" style="display:none">
+                                    <input type="checkbox" id="remember">
+                                    <label for="remember">
+                                        Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                           
+                            <!-- /.col -->
+                        </div>
+                       
+                        <div class="input-group mb-3">
+                            <button type="submit" class="btn btn-default btn-block" ><b>Sign In</b></button>
+                        </div>
+               
+                    </form>
+                    <p class="mb-1">
+                        <a href="/Login/ForgetPassword">I forgot my password</a>
+                        <a href="/Login/ChangePassword" style="margin-left: 48px">Change Password ?</a>
+                    </p>
+
+                    @if (@ViewBag.Message != null)
+                    {
+
+                        <div class="row" id="divMsg" style="margin-top:1%">
+                            <div class="col-md-12">
+                                <div class="card card-default">
+                                    <div class="card-body">
+                                        <div class="alert alert-danger">
+                                            <h5><i class="fa fa-exclamation-triangle"></i> Alert!</h5>
+                                            @ViewBag.Message
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <!-- /.login-card-body -->
+            </div>
+
+        }
+    </div>
+
+    <footer style="text-align:center; margin-top:3%;">
+       <div>
+            @*<strong class="badge" style="background-color:white; color:black">
+                Powered by <a href="https://laayn.com/" target="_blank" style="color:#fd7e14">
+                    Laayn Technologies Pvt. Ltd.
+                </a>  All rights reserved.
+            </strong>*@
+            @*</strong><span class="white" style="padding-left:0px"> All rights reserved.</span>
+            <br />*@
+            @* <strong>
+            <a href="@Url.Action("DownloadAPK", "Login")" target="_blank" class="text-yellow">Click here</a>
+            </strong><span class="white" style="padding-left:0px"> to download PPMS app for FE <i class="fa fa-android"></i></span>*@
+       </div>
+    </footer>
+
+    <!-- /.login-box -->
+    <!-- jQuery -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.min.js"></script>
+</body>
+</html>
+
+
+<div class="modal fade bs-example-modal-sm" id="EditPopup" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm" @*style="max-width:200px"*@>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="mHeader"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+
+            </div>
+            <div class="modal-body" id="EditbodyList">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+    
+        $('#change_pwrd').click(function () {
+            $('#mHeader').text('Change password');
+            $.ajax({
+                url: "/Login/ChangePassowrd",
+                type: "Get",
+                contentType: "application/json; charset=utf-8",
+                datatype: "json",
+                success: function (result) {
+
+                    $('#EditPopup').modal({ backdrop: 'static' });//, keyboard: false
+                    $('#EditbodyList').empty();
+                    $('#EditbodyList').append(result);
+                    $('#EditPopup').modal('show');
+
+                },
+                failure: function (result) {
+                    alert('Fail To Load data');
+                },
+                error: function (result) {
+                }
+            });
+        });
+
+
+    })
+</script>

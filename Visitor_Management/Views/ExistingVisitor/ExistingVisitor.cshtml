@@ -1,0 +1,315 @@
+﻿@model Visitor_Management.Models.Cls_Visitor
+
+@{
+    ViewData["Title"] = "ExisitingVisitorMaster";
+}
+
+<style>
+    .marginBottom {
+        margin-bottom: 4px !important;
+    }
+
+    .spnCustom {
+        color: #827777;
+        font-size: 12px;
+    }
+
+    .present {
+        border: 2px solid #52BE80;
+        /*border-radius: 30%;*/
+    }
+
+    .mispunch {
+        border: 2px solid #EC7063;
+    }
+
+    .visit {
+        margin-top: 5px;
+        border: 2px solid white;
+        /*border-radius: 30%;*/
+    }
+
+    /*.badge {
+        background-color: #;
+ 
+        font-weight: 500;
+        font-size: 14px;
+    }*/
+
+    .alert {
+        /*color: #fff;*/
+        background-color: #ffc107;
+        /*border-color: #0059FF;*/
+        padding: 20px 40px;
+        min-width: 420px;
+        right: 0px;
+        top: 0.5px;
+        position: absolute;
+        border-radius: 5px;
+        border-left: 8px solid #ffa502;
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="~/plugins/fontawesome-free/css/all.css" rel="stylesheet" />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<div class="content-header">
+    @*<div class="container-fluid">*@
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1 class="m-0">Home <span class="spnCustom">ExistingVisitorList</span></h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">ExistingVisitorList</a></li>
+                <li class="breadcrumb-item active">Home</li>
+            </ol>
+        </div>
+    </div>
+    @*</div>*@
+</div>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    // var Permission = Context.Session.GetString("Permission");
+
+    @if (@ViewBag.Message != null)
+    {
+
+        <div class="alert" id="divMsg">
+            <span class="msg" style="color:white; font-size: 18px; padding: 0 20px; font-weight: bold;">@ViewBag.Message</span>
+
+        </div>
+
+    }
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">ExistingVisitor List</h3>
+
+@*                <a href="#" id="btn_add" title="Add Visitor" class="btn btn-sm btn-info text-white" style="float:right"><i class="fa fa-plus-circle"></i> Add</a>
+*@
+            </div>
+            <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead class="mytableheader">
+                        <tr>
+
+                            
+                            <th>Action</th>
+                            <th>Photo</th>
+                            <th>VisitorName</th>
+                            <th>MeetingWith</th>
+                            <th>Date</th>
+                            <th>InTime</th>
+                            <th>ExitTime</th>
+                            <th>Phone</th>
+                            <th>Status</th>
+                            <th>CompanyName</th>
+                            <th>Address</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model._ExistingVList != null && Model._ExistingVList.Count > 0)
+                        {
+                            foreach (var item in Model._ExistingVList)
+                            {
+                                <tr style="font-size:14px; font-weight:500">
+
+                                    @*<td>@Html.DisplayFor(modelItem => item.Visitor_id)</td>*@
+                                    @*<td>@Html.DisplayFor(modelItem => item.VisitorCardNo)</td>*@
+                                    <td>
+                                        <button type="button" title="Click To Add" onclick='javascript: displayPopup("@Url.Content(item.Visitor_Id.ToString())");' class="btn btn-round btn btn-success fa fa-user-plus"></button>
+                                    </td>
+                                    <td><img src="@Html.DisplayFor(modelitem => item.photo)" alt="" height="50" width="50" style="border-radius: 50%; border:2px solid #424949 ;" /></td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                        @if (item.status == "In")
+                                        {
+                                            @if (item.No_Of_Visitor > 0)
+                                            {
+                                                <span class="badge badge-info float-right"style="background-color:deepskyblue">
+                                                    <i class="fas fa-plus" data-toggle="modal" data-target="#visitorModal" data-visitorid="@item.Visitor_Id"></i>@item.No_Of_Visitor
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span></span>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-info float-right">
+                                                <i class="fas fa-plus" data-toggle="modal" data-target="#visitorModal" data-visitorid="@item.Visitor_Id"></i>@item.No_Of_Visitor
+                                            </span>
+                                        }
+
+                                        <div class="modal fade" id="visitorModal" tabindex="-1" role="dialog" aria-labelledby="visitorModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="visitorModalLabel">Visitors Status</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div id="partialViewContainer"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EmpName)
+                                    </td>
+                                    <td>@Html.DisplayFor(modelItem => item.posteddatetime)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.EntryTime)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.ExitTime)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.phone)</td>
+                                    <td>
+                                        @if (item.status == "Out")
+                                        {
+                                            <span class="mispunch badge">Out</span>
+                                        }
+                                        else if (item.status == "In")
+                                        {
+                                            <span class="present badge">In</span>
+                                        }
+                                    </td>
+                                    <td>@Html.DisplayFor(modelItem => item.companyname)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.address)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.purpose_of_visit)</td>
+
+                                </tr>
+                            }
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade bs-example-modal-sm" id="MapPopup" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title" id="modalHeader"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="AddList">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-sm" id="MapPopup" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title" id="modalHeader"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="AddList">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-sm" id="MapPopup" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title" id="modalHeader"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="AddList">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+}
+
+<script src="~/plugins/jquery/jquery.js"></script>
+
+
+<script>
+    setTimeout(function () {
+        $('#divMsg').fadeOut('fast');
+    }, 3000);
+
+   
+    $(document).ready(function () {
+        $('a').removeClass('active');
+        $('li').removeClass('menu-open');
+        $("#liDashboard").addClass('menu-open');
+        $("#aDashboard").addClass('active');
+        $("#aExistingVisitorMaster").addClass('active');
+
+        $('#custom-tabs-three-home-tab').addClass('active');
+
+    });
+
+    function displayPopup(accID) {
+        $('#modalHeader').text('Add Existing Visitor ');
+        if (accID != "") {
+            $.ajax({
+                url: "/ExistingVisitor/AddExistingVisitor",
+                type: "Get",
+                contentType: "application/json; charset=utf-8",
+                data: { "Visitor_id": accID },
+                datatype: "json",
+                success: function (result) {
+                    $('#MapPopup').modal({ backdrop: 'static' });//, keyboard: false
+                    $('#AddList').empty();
+                    $('#AddList').append(result);
+                    $('#MapPopup').modal('show');
+                },
+                failure: function (result) {
+                    alert('Fail To Load data');
+                },
+                error: function (result) {
+                }
+            });
+        }
+    }
+
+    $(function () {
+        $('#visitorModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var visitorId = button.data('visitorid'); // assuming you have a data-visitorid attribute on the plus icon
+            var modal = $(this);
+
+            $.ajax({
+                url: '@Url.Action("ActiveInactiveVisitor", "ExistingVisitor")',
+                type: 'GET',
+                data: { Visitor_id: visitorId },
+                success: function (result) {
+                    $('#partialViewContainer').html(result);
+                },
+                error: function () {
+                    alert('An error occurred while loading the partial view.');
+                }
+            });
+        });
+    });
+</script>

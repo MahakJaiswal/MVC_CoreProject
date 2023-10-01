@@ -1,0 +1,397 @@
+﻿@model Visitor_Management.Models.Cls_Visitor
+
+@{
+    ViewData["Title"] = "MasterVisitor";
+}
+
+<style>
+    .absent {
+        border: 2px solid #52BE80;
+        /*border-radius: 30%;*/
+    }
+
+    .present {
+        border: 2px solid #EC7063;
+        /*border-radius: 30%;*/
+    }
+
+    .Total {
+        border: 2px solid #adadad;
+        /*border-radius: 30%;*/
+    }
+
+
+    .fa-toggle-on:before {
+        color: red;
+    }
+
+    .fa-toggle-off:before {
+        color: green;
+    }
+
+    .marginBottom {
+        margin-bottom: 4px !important;
+    }
+
+    .spnCustom {
+        color: #827777;
+        font-size: 12px;
+    }
+
+    .alert {
+        /*color: #fff;*/
+        background-color: #ffc107;
+        /*border-color: #0059FF;*/
+        padding: 20px 40px;
+        min-width: 420px;
+        right: 0px;
+        top: 0.5px;
+        position: absolute;
+        border-radius: 5px;
+        border-left: 8px solid #ffa502;
+    }
+    .badge{
+        border-radius: 20px;
+        text-align:center
+    }
+  
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="~/plugins/fontawesome-free/css/all.css" rel="stylesheet" />
+
+<div class="content-header">
+    @*<div class="container-fluid">*@
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1 class="m-0">Home <span class="spnCustom">Visitor</span></h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Visitor</a></li>
+                <li class="breadcrumb-item active">Home</li>
+            </ol>
+        </div>
+    </div>
+    @*</div>*@
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @if (@ViewBag.Message != null)
+    {
+
+        <div class="alert" id="divMsg">
+            <span class="msg" style="color:white; font-size: 18px; padding: 0 20px; font-weight: bold;">@ViewBag.Message</span>
+
+        </div>
+
+    }
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Visitor List</h3>               
+                <a href="#" id="btn_add" title="Add Visitor card" class="btn btn-sm btn-info text-white" style="float:right"><i class="fa fa-plus-circle"></i> Add</a>
+            </div>
+            <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead class="mytableheader">
+                        <tr>
+
+                            <th>Profile</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>InTime</th>
+                            <th>OutTime</th>
+@*                            <th>Total Hour</th>
+*@                           <th>MeetingWith</th>
+                            <th>Phone</th>                         
+                            <th>Status</th>
+                            <th>Action</th>
+                            <th>Address</th>
+                            <th>PostedBy</th>
+                            <th>Card#</th>                          
+                            <th>Posted DateTime</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model._VList != null && Model._VList.Count > 0)
+                        {
+                            int i = 0;
+                            foreach (var item in Model._VList)
+                            {
+                                string imgID = i.ToString();
+                                <tr style="font-size:14px; font-weight:500">
+
+                                    <td>
+                                        <a data-gallery="photoviewer" data-group="a" id="@imgID" href="@Html.DisplayFor(modelItem => item.photo)">
+                                            <span><img src="@Html.DisplayFor(modelitem => item.photo)" alt="" height="50" width="50" style="border-radius: 50%; border:2px solid #424949 ; object-fit:cover" /></span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                        @if (item.status == "In")
+                                        {
+                                            @if (item.No_Of_Visitor > 0)
+                                            {
+                                                <span class="badge badge-info float-right">
+                                                    <i class="fas fa-plus" @*data-toggle="modal" data-target="#visitorModal" data-visitorid="@item.Visitor_Id"*@></i>@item.No_Of_Visitor
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span></span>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-info float-right">
+                                                <i class="fas fa-plus" data-toggle="modal" data-target="#visitorModal" data-visitorid="@item.Visitor_Id"></i>@item.No_Of_Visitor
+                                            </span>
+                                        }
+                                       
+                                    </td>
+                                    <td>@Html.DisplayFor(modelItem => item.emailid)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.EntryTime)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.ExitTime)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.EmpName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.phone)</td>                                  
+                                    
+                                    <td>                                    
+                                        <span class="present badge" data-toggle="modal" data-target="#visitorModal" data-visitorid="@item.Visitor_Id">@item.Present_Visitor</span>
+                                        <span class="absent badge" data-toggle="modal" data-target="#visitorModal2" data-visitorid="@item.Visitor_Id">@item.Exit_Visitor</span>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            @if (item.status == "In")
+                                            {
+                                                <button type="button" title=" Active Visitors" onclick='javascript: displayStatusPopup("@Url.Content(item.Visitor_Id.ToString())");' class="btn btn-round btn btn-default fa fa-toggle-on"></button>
+                                                <button type="button" title="Click To Edit" onclick='javascript: displayPopup("@Url.Content(item.Visitor_Id.ToString())");' class="btn btn-round btn btn-default fa fa-edit"></button>
+
+                                            }
+                                            else
+                                            {
+                                                <button type="button" title=" InActive Visitors" class="btn btn-round btn-default fa fa-toggle-off"></button>
+                                                <button type="button" title="Click To Edit" onclick='javascript: displayPopup("@Url.Content(item.Visitor_Id.ToString())");' class="btn btn-round btn btn-default fa fa-edit"></button>
+
+                                            }
+                                        </div>
+                                    </td>
+                                    <td>@Html.DisplayFor(modelItem => item.address)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Postedby)</td>
+
+                                    <td>@Html.DisplayFor(modelItem => item.VisitorCardNo)</td>
+                                   
+                                  
+                                    <td>@Html.DisplayFor(modelItem => item.posteddatetime)</td>
+
+                                </tr>
+                            }
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-lg" id="MapPopup">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalHeader"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="AddList">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-sm" id="EditPopup" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm" @*style="max-width:200px"*@>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="mHeader"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+
+                </div>
+                <div class="modal-body" id="EditbodyList">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="visitorModal" tabindex="-1" role="dialog" aria-labelledby="visitorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="visitorModalLabel">Visitors Status</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="partialViewContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="visitorModal2" tabindex="-1" role="dialog" aria-labelledby="visitorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="visitorModalLabel2">Visitors Status</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="partialViewContainer2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+<script src="~/plugins/jquery/jquery.js"></script>
+
+<script>
+    setTimeout(function () {
+        $('#divMsg').fadeOut('fast');
+    }, 3000);
+    $(document).ready(function () {
+        $('a').removeClass('active');
+        $('li').removeClass('menu-open');
+        $("#liDashboard").addClass('menu-open');
+        $("#aDashboard").addClass('active');
+        $("#aVisitorMaster").addClass('active');
+
+        $('#custom-tabs-three-home-tab').addClass('active');
+
+    });
+
+    $('#btn_add').click(function () {
+        $('#modalHeader').text('Add Visitor');
+        $.ajax({
+            url: "/Visitor/AddVisitor",
+            type: "Get",
+            contentType: "application/json; charset=utf-8",
+            datatype: "json",
+            success: function (result) {
+                //console.log(result);
+                $('#MapPopup').modal({ backdrop: 'static' });//, keyboard: false
+                $('#AddList').empty();
+                $('#AddList').append(result);
+                $('#MapPopup').modal('show');
+            },
+            failure: function (result) {
+                alert('Fail To Load data');
+            },
+            error: function (result) {
+            }
+        });
+    });
+
+    function displayStatusPopup(accID) {
+        $('#mHeader').text('Edit Visitor Status');
+        if (accID != "") {
+            $.ajax({
+                url: "/Visitor/EditVisitorStatus",
+                type: "Get",
+                contentType: "application/json; charset=utf-8",
+                data: { "Visitor_id": accID },
+                datatype: "json",
+                success: function (result) {
+                    $('#EditPopup').modal({ backdrop: 'static' });//, keyboard: false
+                    $('#EditbodyList').empty();
+                    $('#EditbodyList').append(result);
+                    $('#EditPopup').modal('show');
+                },
+                failure: function (result) {
+                    alert('Fail To Load data');
+                },
+                error: function (result) {
+                }
+            });
+        }
+    }
+
+    $('[data-gallery=photoviewer]').click(function (e) {
+
+        e.preventDefault();
+            var items = [],
+            options = {
+                index: $(this).attr('id'),
+                title: false,
+
+            };
+
+        $('[data-gallery=photoviewer]').each(function () {
+            items.push({
+                title: $(this).attr('data-title'),
+                src: $(this).attr('href'),
+            });
+
+        });
+
+        new PhotoViewer(items, options);
+
+    });
+    function redirectToViewPage(url) {
+        window.location.href = url;
+    }
+
+ 
+    $(function () {
+        $('#visitorModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var visitorId = button.data('visitorid'); // assuming you have a data-visitorid attribute on the plus icon
+            var modal = $(this);
+
+            $.ajax({
+                url: '@Url.Action("ActiveVisitorCard", "Visitor")',
+                type: 'GET',
+                data: { Visitor_id: visitorId },
+                success: function (result) {
+                    $('#partialViewContainer').html(result);
+                },
+                error: function () {
+                    alert('An error occurred while loading the partial view.');
+                }
+            });
+        });
+    });
+
+
+    $(function () {
+        $('#visitorModal2').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var visitorId = button.data('visitorid'); // assuming you have a data-visitorid attribute on the plus icon
+            var modal = $(this);
+
+            $.ajax({
+                url: '@Url.Action("InActiveVisitorCard", "Visitor")',
+                type: 'GET',
+                data: { Visitor_id: visitorId },
+                success: function (result) {
+                    $('#partialViewContainer2').html(result);
+                },
+                error: function () {
+                    alert('An error occurred while loading the partial view.');
+                }
+            });
+        });
+    });
+
+
+</script>
+

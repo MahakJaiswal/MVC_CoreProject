@@ -1,0 +1,62 @@
+﻿@model Visitor_Management.Models.Cls_Visitor
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Visitor Data</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"></script>
+</head>
+<body>
+    <div>
+        <canvas id="visitorChart"></canvas>
+    </div>
+
+    <script>
+        var visitorData = @Html.Raw(Json.Serialize(ViewBag.VisitorData));
+        var visitorLabels = [];
+        var visitorCounts = [];
+
+        visitorData.forEach(function (data) {
+            var month = data.Month;
+            var count = data.Count;
+            visitorLabels.push(getMonthName(month));
+            visitorCounts.push(count);
+        });
+
+        function getMonthName(month) {
+            var months = [
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+            return months[month - 1];
+        }
+
+        var ctx = document.getElementById('visitorChart').getContext('2d');
+        var visitorChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: visitorLabels,
+                datasets: [{
+                    label: 'Visitor Count',
+                    data: visitorCounts,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
